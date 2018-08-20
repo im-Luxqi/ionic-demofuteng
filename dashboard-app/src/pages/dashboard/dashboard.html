@@ -1,0 +1,87 @@
+<ion-header class="padding-zero">
+  <ion-navbar hideBackButton="true" class="padding-zero">
+    <div class="header-content">
+      <ion-row>
+        <ion-col col-3>
+          <ion-icon name="menu" class="header-icon-a"></ion-icon>
+        </ion-col>
+        <ion-col col-6>
+          <div>
+            <div class="dashboard-title">Dashboard</div>
+            <div class="dashboard-time">{{today}}-{{today}}</div>
+          </div>
+        </ion-col>
+        <ion-col col-3>
+          <div class="date-box">
+            <div class="date-box-head">
+              <div class="date-box-head-a">
+                <div class="date-box-head-b"></div>
+              </div>
+            </div>
+            <div class="date-box-body">
+              <div class="date-box-body-b">
+                {{today_day}}
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="header-content-next">
+        <ion-col col-4>EX870017A00501</ion-col>
+        <ion-col col-4 class="temp">EX870017A00502</ion-col>
+        <ion-col col-4>EX870017A00503</ion-col>
+      </ion-row>
+    </div>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="div-group">
+    <div class="div-head">
+      Daily Sales
+    </div>
+    <ion-item *ngIf="dailyRate_amount">
+      <span>Amount</span>
+      <span class="check-chosen-mid">{{dailyRate_amount.current}}</span>
+      <span class="check-chosen-right" [ngClass] = "{'per-up':dailyRate_amount.up,'per-down':!dailyRate_amount.up}">{{dailyRate_amount.rate}}</span>
+    </ion-item>
+    <ion-item *ngIf="dailyRate_amount">
+      <span>Quantity</span>
+      <span class="check-chosen-mid">{{dailyRate_quantity.current}}</span>
+      <span class="check-chosen-right" [ngClass] = "{'per-up':dailyRate_quantity.up,'per-down':!dailyRate_quantity.up}">{{dailyRate_quantity.rate}}</span>
+    </ion-item>
+  </div>
+
+
+  <div class="div-group">
+    <div class="div-head">
+      Total Sales Current Week/Month/Year
+    </div>
+
+    <ion-item *ngIf="dailyRate_amount" (click)="checkItem('week')" class="check-chosen-item">
+      <span [ngClass]="{'check-chosen': selected=='week'}">Weeks</span>
+      <span [ngClass]="{'check-chosen': selected=='week'}" class="check-chosen-mid">{{totalRate_week.current}}</span>
+      <span [ngClass]="{'check-chosen': selected=='week','per-up':totalRate_week.up,'per-down':!totalRate_week.up}" class="check-chosen-right">{{totalRate_week.rate}}</span>
+    </ion-item>
+    <ion-item *ngIf="dailyRate_amount" (click)="checkItem('month')" class="check-chosen-item">
+      <span [ngClass]="{'check-chosen': selected=='month'}">Month</span>
+      <span [ngClass]="{'check-chosen': selected=='month'}" class="check-chosen-mid">{{totalRate_month.current}}</span>
+      <span [ngClass]="{'check-chosen': selected=='month','per-up':totalRate_month.up,'per-down':!totalRate_month.up}" class="check-chosen-right per-up">{{totalRate_month.rate}}</span>
+    </ion-item>
+    <ion-item *ngIf="dailyRate_amount" (click)="checkItem('year')" class="check-chosen-item">
+      <span [ngClass]="{'check-chosen': selected=='year'}">Year</span>
+      <span [ngClass]="{'check-chosen': selected=='year'}" class="check-chosen-mid">{{totalRate_year.current}}</span>
+      <span [ngClass]="{'check-chosen': selected=='year','per-up':totalRate_year.up,'per-down':!totalRate_year.up}" class="check-chosen-right per-up">{{totalRate_year.rate}}</span>
+    </ion-item>
+
+    
+    <div id="highchatA"></div>
+    
+  </div>
+
+
+
+</ion-content>

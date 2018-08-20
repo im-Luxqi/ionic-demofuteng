@@ -1,0 +1,141 @@
+
+    .div-head{
+        padding: 0.5rem;
+        background-color: rgb(236,243,244);
+        font-size: 1.5rem;
+        color: rgb(172,174,175);
+    }
+    .div-group{
+        padding-bottom: 1rem;
+    }
+    .check-chosen{
+        font-weight: 500;
+        font-size: 1.7rem;
+    }
+    .check-chosen-item{
+        position: relative;
+    }
+    .check-chosen-mid{
+        color: grey;
+        position: absolute;
+        left: 35%;
+    }
+    .check-chosen-right{
+        float: right;
+        margin-right: 1.5rem;
+    }
+    .per-up{
+        color: lightgreen;
+    }
+    .per-down{
+        color: rgb(255, 144, 144);
+    }
+    .header-content{
+        text-align: center;
+        color: rgb(205,208,212);
+        background-color:rgb(74, 88, 110);
+    }
+    .header-content-next{
+        background-color: rgb(35, 47, 58);
+        font-size: 0.8rem;
+    }
+    .item-block {
+        min-height: 1rem;
+    }
+    .item-md {
+        font-size: 1rem;
+    }
+    .header-icon-a {
+        float: left;
+        font-size: 3rem;
+        margin-left: 1rem;
+        padding-top: 1rem;
+    }
+    .temp{
+        color: rgb(106,138,166);
+    }
+    .date-box{
+        margin-top: 0.5rem;
+        margin-right: 1rem;
+        float: right;
+        width: 55%;
+    }
+    .date-box-head {
+        padding: 0 0.7rem;
+    }
+    .date-box-head-a {
+        background-color: white;
+        height: 0.3rem;
+        padding: 0 0.4rem;
+    }
+    .date-box-head-b {
+        background-color: rgb(74, 88, 110);
+        height: 0.3rem;
+    }
+    .date-box-body {
+        padding: 1rem 0.5rem 0.5rem 0.5rem;
+        background-color: white;
+        border-radius: 0.3rem;
+    }
+    .date-box-body-b {
+        padding-top: 0.2rem;
+        background-color: rgb(74, 88, 110);
+        height: 2rem;
+    }
+    .dashboard-title {
+        font-size: 2rem;
+        padding-top: 0.3rem;
+    }
+    .dashboard-time {
+        margin-top: 0.5rem;
+    }
+    .padding-zero{
+        padding: 0;
+    }
+    /* #highchatA {
+        width: 100%;
+    }
+    #highchatA .highcharts-container {
+        width: 100%;
+    }
+    svg {
+        width: 700;
+    } */
+
+    .header-icon-a {
+        float: left;
+        width: 3rem;
+        margin-left: 1rem;
+        padding-top: 1rem;
+    }
+
+.dark-td {
+    background-color: rgb(242,242,242);
+}
+
+
+#bigContent table {
+    margin-bottom: 0;
+}
+/* #bigContent .panel-body {
+    padding-bottom: 0;
+} */
+#bigContent table{
+    margin-bottom: 0;
+}
+#bigContent table.t-hover tr:hover {
+    background-color: rgba(0, 0, 0, 0.075); }
+
+.table-activing {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+.text-dashboard {
+    padding-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+}
+.text-check {
+    font-size: 2rem;font-weight: 700;margin-bottom: 0.5rem;
+}

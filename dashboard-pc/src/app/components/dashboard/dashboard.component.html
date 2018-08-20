@@ -1,0 +1,184 @@
+<div *ngIf="smallScreen">
+  <div class="padding-zero">
+    <div class="padding-zero">
+      <div class="header-content">
+        <div class="row">
+          <div class="col-md-3 col-sm-3 col-xs-3">
+            <img src="assets/imgs/menu.png" class="header-icon-a ">
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <div>
+              <div class="dashboard-title">Dashboard</div>
+              <div class="dashboard-time">{{today}}-{{today}}</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="date-box">
+              <div class="date-box-head">
+                <div class="date-box-head-a">
+                  <div class="date-box-head-b"></div>
+                </div>
+              </div>
+              <div class="date-box-body">
+                <div class="date-box-body-b">
+                  {{today_day}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" class="header-content-next">
+          <div class="col-md-4 col-sm-4 col-xs-4">EX870017A00501</div>
+          <div class="col-md-4 col-sm-4 col-xs-4 temp">EX870017A00502</div>
+          <div class="col-md-4 col-sm-4 col-xs-4">EX870017A00503</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div>
+
+
+
+    <div class="div-group">
+      <div class="div-head">
+        Daily Sales
+      </div>
+      <div *ngIf="dailyRate_amount">
+        <span>Amount</span>
+        <span class="check-chosen-mid">{{dailyRate_amount.current}}</span>
+        <span class="check-chosen-right" [ngClass]="{'per-up':dailyRate_amount.up,'per-down':!dailyRate_amount.up}">{{dailyRate_amount.rate}}</span>
+      </div>
+      <div *ngIf="dailyRate_amount">
+        <span>Quantity</span>
+        <span class="check-chosen-mid">{{dailyRate_quantity.current}}</span>
+        <span class="check-chosen-right" [ngClass]="{'per-up':dailyRate_quantity.up,'per-down':!dailyRate_quantity.up}">{{dailyRate_quantity.rate}}</span>
+      </div>
+    </div>
+
+
+    <div class="div-group">
+      <div class="div-head">
+        Total Sales Current Week/Month/Year
+      </div>
+
+      <div *ngIf="dailyRate_amount" (click)="checkItem('week')" class="check-chosen-item">
+        <span [ngClass]="{'check-chosen': selected=='week'}">Weeks</span>
+        <span [ngClass]="{'check-chosen': selected=='week'}" class="check-chosen-mid">{{totalRate_week.current}}</span>
+        <span [ngClass]="{'check-chosen': selected=='week','per-up':totalRate_week.up,'per-down':!totalRate_week.up}" class="check-chosen-right">{{totalRate_week.rate}}</span>
+      </div>
+      <div *ngIf="dailyRate_amount" (click)="checkItem('month')" class="check-chosen-item">
+        <span [ngClass]="{'check-chosen': selected=='month'}">Month</span>
+        <span [ngClass]="{'check-chosen': selected=='month'}" class="check-chosen-mid">{{totalRate_month.current}}</span>
+        <span [ngClass]="{'check-chosen': selected=='month','per-up':totalRate_month.up,'per-down':!totalRate_month.up}" class="check-chosen-right per-up">{{totalRate_month.rate}}</span>
+      </div>
+      <div *ngIf="dailyRate_amount" (click)="checkItem('year')" class="check-chosen-item">
+        <span [ngClass]="{'check-chosen': selected=='year'}">Year</span>
+        <span [ngClass]="{'check-chosen': selected=='year'}" class="check-chosen-mid">{{totalRate_year.current}}</span>
+        <span [ngClass]="{'check-chosen': selected=='year','per-up':totalRate_year.up,'per-down':!totalRate_year.up}" class="check-chosen-right per-up">{{totalRate_year.rate}}</span>
+      </div>
+
+
+      <!-- <div id="highchatA"></div> -->
+      <chart id="highchatA" style="min-width:400px;height:400px" [options]="options"></chart>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div id="bigContent" *ngIf="!smallScreen" style="padding:1rem">
+    <div class="text-dashboard">Dashboard</div>
+    <div class="text-check">检索条件</div>
+  <table border="1" width="95%" class="table" style="border: 1px solid #c2cfd6;margin-bottom: 1.5rem;">
+    <tr>
+      <td class="dark-td">Date</td>
+      <td>
+        <p-calendar dateFormat="yy-mm-dd"></p-calendar>
+            ---
+        <p-calendar dateFormat="yy-mm-dd"></p-calendar>
+      </td>
+    </tr>
+    <tr>
+      <td class="dark-td">Device</td>
+      <td><p-dropdown [options]="device" [style]="{'width':'160px'}"></p-dropdown></td>
+    </tr>
+    <tr>
+      <td class="dark-td">Date Type</td>
+      <td><p-dropdown [options]="dateType" [style]="{'width':'160px'}"></p-dropdown></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Daily Sales
+    </div>
+    <div class="panel-body">
+      <table border="0" width="95%" class="table table-striped check-table-border t-hover">
+        <tbody>
+          <tr *ngIf="dailyRate_amount">
+            <td width="35%">Amount</td>
+            <td>{{dailyRate_amount.current}}</td>
+            <td [ngClass]="{'per-up':dailyRate_amount.up,'per-down':!dailyRate_amount.up}">
+              <span class="check-chosen-right">{{dailyRate_amount.rate}}</span>
+            </td>
+          </tr>
+          <tr *ngIf="dailyRate_amount">
+            <td>Quantity</td>
+            <td>{{dailyRate_quantity.current}}</td>
+            <td [ngClass]="{'per-up':dailyRate_quantity.up,'per-down':!dailyRate_quantity.up}">
+              <span class="check-chosen-right">{{dailyRate_quantity.rate}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Total Sales Current Week/Month/Year
+    </div>
+    <div class="panel-body">
+      <table border="0" width="95%" class="table table-striped check-table-border t-hover">
+        <tbody>
+          <tr *ngIf="dailyRate_amount" (click)="checkItem('week')">
+            <td width="35%" [ngClass]="{'check-chosen': selected=='week'}">Weeks</td>
+            <td [ngClass]="{'check-chosen': selected=='week'}">{{totalRate_week.current}}</td>
+            <td [ngClass]="{'check-chosen': selected=='week','per-up':totalRate_week.up,'per-down':!totalRate_week.up}">
+              <span class="check-chosen-right">{{totalRate_week.rate}}</span>
+            </td>
+          </tr>
+          <tr *ngIf="dailyRate_amount" (click)="checkItem('month')">
+            <td [ngClass]="{'check-chosen': selected=='month'}">Month</td>
+            <td [ngClass]="{'check-chosen': selected=='month'}">{{totalRate_month.current}}</td>
+            <td [ngClass]="{'check-chosen': selected=='month','per-up':totalRate_month.up,'per-down':!totalRate_month.up}">
+              <span class="check-chosen-right">{{totalRate_month.rate}}</span>
+            </td>
+          </tr>
+          <tr *ngIf="dailyRate_amount" (click)="checkItem('year')">
+            <td [ngClass]="{'check-chosen': selected=='year'}">year</td>
+            <td [ngClass]="{'check-chosen': selected=='year'}">{{totalRate_year.current}}</td>
+            <td [ngClass]="{'check-chosen': selected=='year','per-up':totalRate_year.up,'per-down':!totalRate_year.up}">
+              <span class="check-chosen-right">{{totalRate_year.rate}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+
+
+
+  <chart style="padding:1rem" id="highchatA"  [options]="options"></chart>
+
+
+
+</div>
